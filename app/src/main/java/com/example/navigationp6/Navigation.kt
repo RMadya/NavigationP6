@@ -23,4 +23,10 @@ fun DataApp(
     navController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier // Beri nilai default pada modifier
 ){
-    Scaffold {
+    Scaffold { isiRuang->
+        NavHost(
+            // 3. Perbaikan: Menggunakan navController yang benar
+            navController = navController,
+            startDestination = NavigasiRute.FormulirKu.name, // Menggunakan enum yang diperbaiki
+            modifier = Modifier.padding(paddingValues = isiRuang)
+        )
