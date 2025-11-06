@@ -91,3 +91,21 @@ fun TampilData(
                 }
             }
 
+            // Tombol "Kembali" diletakkan di bagian bawah terpisah
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = dimensionResource(id = R.dimen.padding_medium))
+                    .padding(bottom = dimensionResource(id = R.dimen.padding_medium))
+            ) {
+                Spacer(modifier = Modifier.height(height = 10.dp)) // Jarak antar data terakhir dengan tombol
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onBackBtnClick
+                ) {
+                    Text(text = stringResource(id = R.string.back))
+                }
+            }
+        }
+    }
+}
