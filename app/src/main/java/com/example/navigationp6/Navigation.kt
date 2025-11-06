@@ -1,0 +1,65 @@
+package com.example.navigationp6
+
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost // Import NavHost
+import androidx.navigation.compose.composable // Import composable
+import androidx.navigation.compose.rememberNavController
+import com.example.navigationp6.view.FormIsian
+import com.example.navigationp6.view.TampilData
+
+// 1. Perbaikan: Ubah nama enum ke bahasa Inggris agar konsisten (best practice)
+enum class NavigasiRute {
+    FormulirKu, // Rute untuk FormIsian
+    Detail // Rute untuk TampilData
+}
+
+@Composable
+fun DataApp(
+    // 2. Perbaikan: Ubah 'nayController' menjadi 'navController' agar standar dan mudah dibaca
+    navController: NavHostController = rememberNavController(),
+    modifier: Modifier = Modifier // Beri nilai default pada modifier
+){
+    Scaffold { isiRuang->
+        NavHost(
+            // 3. Perbaikan: Menggunakan navController yang benar
+            navController = navController,
+            startDestination = NavigasiRute.FormulirKu.name, // Menggunakan enum yang diperbaiki
+            modifier = Modifier.padding(paddingValues = isiRuang)
+        ){
+            // 4. Perbaikan: Menggunakan enum yang diperbaiki dan penamaan rute yang benar
+            composable(route = NavigasiRute.FormulirKu.name){
+                FormIsian (
+                    OnSubmitBtnClick = {
+                        // Navigasi ke rute Detail
+                        navController.navigate(route = NavigasiRute.Detail.name)
+                    }
+                )
+            }
+            // 5. Perbaikan: Menggunakan enum yang diperbaiki
+            composable(route = NavigasiRute.Detail.name){
+                TampilData (
+                    onBackBtnClick = {
+                        // Panggil fungsi untuk kembali
+                        cancelAndBackToFormulirKu(navController)
+                    }
+                )
+            }
+        }
+    }
+}
+
+private fun cancelAndBackToFormulirKu(
+    navController: NavHostController
+){
+    // 6. Perbaikan: Menggunakan enum yang diperbaiki
+    // popBackStack: Kembali ke rute FormulirKu (sebelumnya)
+    // inclusive = false: Rute FormulirKu TIDAK dihilangkan dari back stack
+    navController.popBackStack(
+        route = NavigasiRute.FormulirKu.name,
+        inclusive = false
+    )
+}
