@@ -54,4 +54,40 @@ fun TampilData(
                         containerColor = colorResource(id = R.color.teal_700)
                     )
             )
-        })
+        }) { isiRuang ->
+        Column(
+            modifier = Modifier
+                .padding(paddingValues = isiRuang)
+                .fillMaxWidth(), // Pastikan Column mengisi lebar penuh
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(all = dimensionResource(id = R.dimen.padding_medium))
+                    .weight(1f), // Agar Column data mengambil semua sisa ruang
+                verticalArrangement = Arrangement.spacedBy(space = dimensionResource(id = R.dimen.padding_small))
+            ) {
+                // Tampilkan Data
+                items.forEach { item ->
+                    Column {
+                        Text(
+                            text = item.first.uppercase(),
+                            fontSize = 16.sp
+                        )
+                        Text(
+                            text = item.second,
+                            fontWeight = FontWeight.Bold,
+                            // 2. Perbaikan: Penulisan FontFamily yang benar
+                            fontFamily = FontFamily.Cursive,
+                            fontSize = 22.sp
+                        )
+                    }
+                    // 3. Perbaikan: Menambahkan padding horizontal pada Divider
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 4.dp),
+                        thickness = 1.dp,
+                        color = Color.Cyan
+                    )
+                }
+            }
+
