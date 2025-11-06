@@ -17,3 +17,10 @@ enum class NavigasiRute {
     Detail // Rute untuk TampilData
 }
 
+@Composable
+fun DataApp(
+    // 2. Perbaikan: Ubah 'nayController' menjadi 'navController' agar standar dan mudah dibaca
+    navController: NavHostController = rememberNavController(),
+    modifier: Modifier = Modifier // Beri nilai default pada modifier
+){
+    Scaffold {
