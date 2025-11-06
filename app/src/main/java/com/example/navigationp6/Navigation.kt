@@ -31,3 +31,24 @@ fun DataApp(
             modifier = Modifier.padding(paddingValues = isiRuang)
         ){
             // 4. Perbaikan: Menggunakan enum yang diperbaiki dan penamaan rute yang benar
+            composable(route = NavigasiRute.FormulirKu.name){
+                FormIsian (
+                    OnSubmitBtnClick = {
+                        // Navigasi ke rute Detail
+                        navController.navigate(route = NavigasiRute.Detail.name)
+                    }
+                )
+            }
+            // 5. Perbaikan: Menggunakan enum yang diperbaiki
+            composable(route = NavigasiRute.Detail.name){
+                TampilData (
+                    onBackBtnClick = {
+                        // Panggil fungsi untuk kembali
+                        cancelAndBackToFormulirKu(navController)
+                    }
+                )
+            }
+        }
+    }
+}
+
