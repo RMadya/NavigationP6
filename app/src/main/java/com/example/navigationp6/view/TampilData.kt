@@ -42,3 +42,16 @@ fun TampilData(
     Scaffold(
         topBar = {
             TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.tampil),
+                        color = Color.White
+                    )
+                },
+                // Menggunakan TopAppBarDefaults.topAppBarColors untuk Material 3
+                colors = TopAppBarDefaults
+                    .topAppBarColors(
+                        containerColor = colorResource(id = R.color.teal_700)
+                    )
+            )
+        })
