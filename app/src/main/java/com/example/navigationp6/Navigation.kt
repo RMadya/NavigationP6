@@ -55,9 +55,6 @@ fun DataApp(
 private fun cancelAndBackToFormulirKu(
     navController: NavHostController
 ){
-    // 6. Perbaikan: Menggunakan enum yang diperbaiki
-    // popBackStack: Kembali ke rute FormulirKu (sebelumnya)
-    // inclusive = false: Rute FormulirKu TIDAK dihilangkan dari back stack
     navController.popBackStack(
         route = NavigasiRute.FormulirKu.name,
         inclusive = false
