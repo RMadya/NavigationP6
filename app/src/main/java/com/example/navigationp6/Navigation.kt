@@ -29,4 +29,5 @@ fun DataApp(
             navController = navController,
             startDestination = NavigasiRute.FormulirKu.name, // Menggunakan enum yang diperbaiki
             modifier = Modifier.padding(paddingValues = isiRuang)
-        )
+        ){
+            // 4. Perbaikan: Menggunakan enum yang diperbaiki dan penamaan rute yang benar
